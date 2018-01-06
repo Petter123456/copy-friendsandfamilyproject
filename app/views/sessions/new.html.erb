@@ -5,3 +5,10 @@ Email: <%= text_field_tag :email %>
 Password: <%= password_field_tag :password %>
 <%= submit_tag "Login" %>
 <% end %>
+
+
+<p><%= link_to "forgotten password?", new_password_reset_path %></p>
+<div class="field">
+  <%= check_box_tag :remember_me, 1, params[:remember_me] %>
+  <%= label_tag :remember_me %>
+</div>

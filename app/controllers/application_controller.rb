@@ -11,4 +11,8 @@ class ApplicationController < ActionController::Base
   redirect_to '/login' unless current_user
   end
 
+  def current_user_cookies
+    @current_user_cookies ||= User.find_by_auth_token!(cookies[:auth_token]) if cookies[:auth_token]
+  end
+
 end

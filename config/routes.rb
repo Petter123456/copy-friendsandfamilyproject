@@ -1,15 +1,25 @@
 Rails.application.routes.draw do
 
+#root
   root 'sessions#new'
 
-  get '/login' => 'sessions#new'
-  post '/login' => 'sessions#create'
-  get '/logout' => 'sessions#destroy'
+#reset password
+  # get '/password_resets' => 'password_reset#new'
 
-  get '/signup' => 'user#new'
+#login
+  get '/login' => 'sessions#new', :as => "login"
+  post '/login' => 'sessions#create'
+  get '/logout' => 'sessions#destroy', :as => "logout"
+  get '/signup' => 'user#new' , :as => "signup"
   post '/signup' => 'user#create'
 
+#path from signup
   get '/products' => 'products#index'
+
+
+  resources :users
+  resources :sessions
+  resources :password_resets
 
   resources :reviews
   resources :products
