@@ -1,6 +1,10 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Listing products</h1>
+
+<% if @products.none? %>
+  <p>There are no products containing the term <b> <%= params[:search] %></b> .</p>
+<% else %>
 <table>
   <thead>
     <tr>
@@ -24,7 +28,9 @@
     <% end %>
   </tbody>
 </table>
-
+<% end %>
 <br>
+
+
 
 <%= link_to 'New Product', new_product_path %>
